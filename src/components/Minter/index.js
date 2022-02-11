@@ -38,7 +38,7 @@ export default function Minter() {
           setStatus("👆🏽 You can mint new pack now.");
         } else {
           setWalletAddress(null);
-          setStatus("🦊 Connect to Metamask using the top right button.");
+          setStatus("🦊 Connect to Metamask using the connect button.");
         }
       });
       window.ethereum.on("chainChanged", (chain) => {
@@ -71,7 +71,7 @@ export default function Minter() {
     }
   }
   const increase = () => {
-    if(counter < 3)
+    if(counter < 5)
     setCount(counter+1)
   }
 
@@ -86,7 +86,7 @@ export default function Minter() {
       return
     }
 
-    if(parseInt(numberOfWallet) + counter > 3) {
+    if(parseInt(numberOfWallet) + counter > 5) {
       setStatus(`Exceeded max token purchase per wallet`)
       return
     }
@@ -95,7 +95,7 @@ export default function Minter() {
     const contract = getContract()
 
     try {
-      let tx = await contract.mintToken(counter, { value: BigNumber.from(1e9).mul(BigNumber.from(1e9)).mul(8).div(100).mul(counter), from: walletAddress })
+      let tx = await contract.mintToken(counter, { value: BigNumber.from(1e9).mul(BigNumber.from(1e9)).mul(35).div(1000).mul(counter), from: walletAddress })
       let res = await tx.wait()
       if (res.transactionHash) {
         setStatus(`You minted ${counter} BBOYDAOS Successfully`)
@@ -146,7 +146,7 @@ export default function Minter() {
           {walletAddress && (
             <>
             <h1 className='mint-amount'>Minted {totalSupply}/3000</h1>
-            <h6 className='mint-price'>Total Price: {0.08 * counter}ETH</h6>
+            <h6 className='mint-price'>Total Price: {(0.035 * counter).toFixed(3)}ETH</h6>
               <div className='div-counter'>
                 <button className='minus' onClick={decrease}>-</button>
                 <h1 className='counter'>{counter}</h1>
@@ -154,7 +154,7 @@ export default function Minter() {
               </div>
             </>
           )}
-          {walletAddress ? <Button className='mint-btn' onClick={onMint}>Mint</Button> : <Button className='connect-btn' onClick={() => onClickConnectWallet()}>Connect to Wallet</Button>}
+          {walletAddress ? (!loading ? <Button className='mint-btn' onClick={onMint}>Mint</Button> : <p className='mint-loading'>Minting...</p>) : <Button className='connect-btn' onClick={() => onClickConnectWallet()}>Connect to Wallet</Button>}
         </div>
       </div>
       <ToastContainer />

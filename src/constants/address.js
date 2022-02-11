@@ -1,2 +1,2 @@
 export const chainId = "0x4"; //Rinkeby Testnet
-export const contractAddress = "0xc3cDaC7913De6e52020CB7C68efAD39e6c351287";
+export const contractAddress = "0x927e292757B7B352340EBD22E937D6d0E37B3333";

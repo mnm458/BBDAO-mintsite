@@ -41,13 +41,21 @@
   width: 12em !important;
 }
 /*  */
-/* .mint-btn:hover { */
-  /* width: 13.5em !important; */
-  /* border-radius: unset !important; */
-  /* background-color: #797979 !important; */
-  /* color: #ffffff !important; */
+.mint-btn:hover {
+  width: 13.5em !important;
+  border-radius: unset !important;
+  background-color: #797979 !important;
+  color: #ffffff !important;
   /* font-size: 1.2rem !important; */
-/* } */
+}
+
+.mint-loading {
+  color: rgb(255, 255, 255);
+  margin: unset;
+  font-size: 25px;
+  font-weight: bolder;
+  font-style: italic;
+}
 
 .ptop {
   width: 45%;

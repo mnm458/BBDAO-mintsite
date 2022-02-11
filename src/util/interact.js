@@ -62,7 +62,7 @@ export const getCurrentWalletConnected = async () => {
       } else {
         return {
           address: "",
-          status: "🦊 Connect to Metamask and choose the correct chain using the top right button.",
+          status: "🦊 Connect to Metamask and choose the correct chain using the connect button.",
         }
       }
     } catch (err) {
